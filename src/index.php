@@ -1,6 +1,7 @@
 <?php 
 error_reporting(0);
 session_start();
+include_once('conecao.php');
 $pg = $_GET['pg'];
 ?>
 <html>
@@ -19,6 +20,14 @@ $pg = $_GET['pg'];
 <?php
 
 
+
+
+
+
+
+
+
+
 if ($pg = 'upload'){
     $diretorio = "img/";
 
@@ -29,9 +38,9 @@ if ($pg = 'upload'){
         for ($controle = 0; $controle < count($arquivo['name']); $controle++){
             $destino = $diretorio."/".$arquivo['name'] [$controle];
             if (move_uploaded_file($arquivo['tmp_name'] [$controle], $destino)){
-                echo 'Deu certo PAE';
+                echo 'Upload da imagem: '.$arquivo['tmp_name'].' executado com sucesso.' ;
             }else{
-                echo 'Deu certo não cabeça';
+                echo 'O Upload falhou';
             }
         }
     }
