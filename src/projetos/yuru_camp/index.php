@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once('../conexao.php');
+include_once('../../conexao.php');
 $pg = $_GET['pg'];
 var_dump($_SESSION);
 
@@ -72,6 +72,7 @@ if($pg == 'apagarcap'){
 		<?php
 			echo "<a href='index.php?pg=cadastrarcap'>Cadastrar novo capitulo</a></br></br>";
 			echo "<a href='index.php?pg=apagarcap'>Cadastrar novo capitulo</a></br></br>";
+			echo "<a href='../../index.php'>Voltar</a></br></br>";
 		?>
 	</body>
 </html>
