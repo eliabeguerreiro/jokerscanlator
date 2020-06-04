@@ -1,8 +1,15 @@
 <?php 
 error_reporting(0);
 session_start();
-include_once('conecao.php');
+include_once('conexao.php');
 $pg = $_GET['pg'];
+
+
+if ($pg == 'upload'){
+    $_SESSION = $_POST;
+    header('Location: projetos/'.$_POST['projeto'].'/index.php');
+    }
+    
 ?>
 <html>
 <head>
@@ -11,38 +18,19 @@ $pg = $_GET['pg'];
 </head>
 <body>
     <form enctype="multipart/form-data" method="POST" action="index.php?pg=upload">
+        <label>Número do capitulo: </label>
+        <input type="text" name="capitulo"><br><br>
         <label for="imagem">Imagens:</label><br/>
         <input type="file" name="arquivo[]" multiple="multiple"/></br></br>
+        <label for="projeto">Projeto</label>
+        <select name="projeto">
+            <option value="">--</option>
+            <option value="peerless_dad">Peerless Dad</option>
+            <option value="yuru_camp">Yuru camp</option>
+        </select>
         <input name="enviar" type="submit" value="Enviar"/>
     </form>
 </body>
 </html>
 <?php
 
-
-
-
-
-
-
-
-
-
-if ($pg = 'upload'){
-    $diretorio = "img/";
-
-    if (!is_dir($diretorio)){
-        echo "Diretorio $diretorio Inesistente.";
-    }else{
-        $arquivo = isset($_FILES['arquivo']) ? $_FILES['arquivo'] : FALSE;
-        for ($controle = 0; $controle < count($arquivo['name']); $controle++){
-            $destino = $diretorio."/".$arquivo['name'] [$controle];
-            if (move_uploaded_file($arquivo['tmp_name'] [$controle], $destino)){
-                echo 'Upload da imagem: '.$arquivo['tmp_name'].' executado com sucesso.' ;
-            }else{
-                echo 'O Upload falhou';
-            }
-        }
-    }
-    
-}
