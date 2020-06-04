@@ -1,23 +1,39 @@
 <?php
 session_start();
+$_SESSION['projeto'] = 'yuru_camp';
 include_once('../../conexao.php');
 $pg = $_GET['pg'];
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
-if($pg == 'cadastrarcap'){
 
+if($pg == 'cadastrarcap'){?>
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Upload capitulo <?php echo $_SESSION['projeto'];?></title>
+	</head>
+	<body>
+
+		<form enctype="multipart/form-data" method="POST" action="index.php?pg=cadastrando">
+			<label>Número do capitulo: </label>
+			<input type="text" name="capitulo"><br><br>	
+			<input type="file" name="arquivo[]" multiple="multiple" /><br><br>
+			<input name="enviar" type="submit" value="Enviar">
+	
+		</form>
+	
+	</body>
+</html>
+<?php
+}
+if($pg == 'cadastrando'){
     $projeto = $_SESSION['projeto'];
-    $capitulo = $_SESSION['capitulo'];
+    $capitulo = $_POST['capitulo'];
     $_UP['pasta'] = $capitulo.'/';
     mkdir($_UP['pasta'], 0777);
-
-    //até aqui ta tudo onlines
-
-
-
     $diretorio = $capitulo.'/';
-
-    if(!is_dir($diretorio)){ 
+	if(!is_dir($diretorio)){ 
         echo "Pasta $diretorio nao existe";
     }else{
         $arquivo = isset($_FILES['arquivo']) ? $_FILES['arquivo'] : FALSE;
@@ -28,30 +44,9 @@ if($pg == 'cadastrarcap'){
                 echo "Upload realizado com sucesso<br>"; 
             }else{
                 echo "Erro ao realizar upload";
-            }
-            
+            }      
         }
     }
-?>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-	<head>
-		<meta charset="utf-8">
-		<title>Upload capitulo <?php echo $_SESSION['projeto'];?></title>
-	</head>
-	<body>
-	
-		<form enctype="multipart/form-data" method="POST" action="index.php">
-			<label>Número do capitulo: </label>
-			<input type="text" name="capitulo"><br><br>	
-			<input type="file" name="arquivo[]" multiple="multiple" /><br><br>
-			<input name="enviar" type="submit" value="Enviar">
-		</form>
-	
-	</body>
-</html>
-<?php
 echo "<a href='index.php'>Voltar</a></br></br>";
 }
 if($pg == 'apagarcap'){ 
@@ -71,13 +66,11 @@ if($pg == 'apagarcap'){
 	<body>
 		<?php
 			echo "<a href='index.php?pg=cadastrarcap'>Cadastrar novo capitulo</a></br></br>";
-			echo "<a href='index.php?pg=apagarcap'>Cadastrar novo capitulo</a></br></br>";
+			echo "<a href='index.php?pg=apagarcap'>Apagar capitulo</a></br></br>";
 			echo "<a href='../../index.php'>Voltar</a></br></br>";
 		?>
 	</body>
 </html>
-
-
 
 
 
