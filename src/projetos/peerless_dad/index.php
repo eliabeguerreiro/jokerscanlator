@@ -18,6 +18,8 @@ if($pg == 'cadastrarcap'){?>
 		<form enctype="multipart/form-data" method="POST" action="index.php?pg=cadastrando">
 			<label>Número do capitulo: </label>
 			<input type="text" name="capitulo"><br><br>	
+			<label>Volume do capitulo: </label>
+			<input type="text" name="volume"><br><br>	
 			<input type="file" name="arquivo[]" multiple="multiple" /><br><br>
 			<input name="enviar" type="submit" value="Enviar">
 	
@@ -29,10 +31,18 @@ if($pg == 'cadastrarcap'){?>
 }
 if($pg == 'cadastrando'){
     $projeto = $_SESSION['projeto'];
-    $capitulo = $_POST['capitulo'];
+	$capitulo = $_POST['capitulo'];
+	$volume = $_POST['volume'];
     $_UP['pasta'] = $capitulo.'/';
     mkdir($_UP['pasta'], 0777);
-    $diretorio = $capitulo.'/';
+	$diretorio = $capitulo.'/';
+	
+	$result = "INSERT INTO capitulos ( projeto, volume, numero, link) VALUES('peerless', $volume, $capitulo, 'projetos/peerless_dad/'.$diretorio)";
+	if($resultado = mysqli_query($conn, $result)){
+		echo 'o capitulo subio para o banco de dados';
+	};
+	
+
 	if(!is_dir($diretorio)){ 
         echo "Pasta $diretorio nao existe";
     }else{
