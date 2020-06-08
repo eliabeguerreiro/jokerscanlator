@@ -1,12 +1,10 @@
 <?php
+session_start();
 chdir('testeleitor/');
+//chdir("session['local']");
 $arquivos = glob("{*.png,*.jpg,*.jpeg,*.bmp,*.gif}", GLOB_BRACE);?>
-
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="utf-8">
     <title>Projeto x cap x</title>
@@ -17,15 +15,25 @@ $arquivos = glob("{*.png,*.jpg,*.jpeg,*.bmp,*.gif}", GLOB_BRACE);?>
     </script>
 </head>
 
-<body>
+<body class= 'bg-secondary'>
+<center>
+
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img class = "img-thumbnail" src="src/projetos/peerless_dad/capa_peerless.jpg" width="120" height="150" alt="">
+  </a>
+</nav>
+
+
+
+
     <div class='container'>
-        <center>
+        
 
             <ul class="list-group"><?php
 foreach($arquivos as $img) echo "<li class='list-group-item'><img class='img-fluid' src='testeleitor/".$img."'></img></li>";
 ?>
-            </ul>
-        </center>
+            </ul> 
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
@@ -33,6 +41,7 @@ foreach($arquivos as $img) echo "<li class='list-group-item'><img class='img-flu
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
+        </center>
 </body>
 
 </html>
