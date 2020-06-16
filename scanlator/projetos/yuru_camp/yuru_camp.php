@@ -34,18 +34,18 @@ if($pg == 'cadastrando'){
 	$capitulo = $_POST['capitulo'];
 	$volume = $_POST['volume'];
     $_UP['pasta'] = $capitulo.'/';
-    mkdir($_UP['pasta'], 0777);
+    //mkdir($_UP['pasta'], 0777);
 	$diretorio = $capitulo.'/';
 	
-	$result = "INSERT INTO capitulos ( projeto, volume, numero, link) VALUES('peerless', $volume, $capitulo, 'projetos/yuru_camp/'.$diretorio)";
+	$result = "INSERT INTO capitulos ( projeto, volume, numero, link) VALUES('yurucamp', $volume, $capitulo, 'projetos/yuru_camp/$diretorio')";
 	if($resultado = mysqli_query($conn, $result)){
-		echo 'o capitulo subio para o banco de dados';
+		echo 'Capitulo cadastrado no banco de dados';
 	};
 
 
 	if(!is_dir($diretorio)){ 
         echo "Pasta $diretorio nao existe";
-    }else{
+    }/*else{
         $arquivo = isset($_FILES['arquivo']) ? $_FILES['arquivo'] : FALSE;
         for ($controle = 0; $controle < count($arquivo['name']); $controle++){
             
@@ -56,7 +56,7 @@ if($pg == 'cadastrando'){
                 echo "Erro ao realizar upload";
             }      
         }
-    }
+    }*/
 echo "<a href='../painel.php'>Voltar</a></br></br>";
 }
 if($pg == 'apagarcap'){ 

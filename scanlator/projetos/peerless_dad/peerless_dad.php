@@ -37,7 +37,8 @@ if($pg == 'cadastrando'){
     mkdir($_UP['pasta'], 0777);
 	$diretorio = $capitulo.'/';
 	
-	$result = "INSERT INTO capitulos ( projeto, volume, numero, link) VALUES('peerless', $volume, $capitulo, 'projetos/peerless_dad/'.$diretorio)";
+	$result = "INSERT INTO capitulos ( projeto, volume, numero, link) VALUES('peerless', $volume, $capitulo, 'projetos/peerless_dad/.$diretorio)";
+
 	if($resultado = mysqli_query($conn, $result)){
 		echo 'Capitulo cadastrado no banco de dados';
 	};
