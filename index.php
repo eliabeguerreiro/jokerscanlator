@@ -19,10 +19,10 @@ session_start();
 
 
 
-<a href="scanlator/painel.php">Administração</a>
+<a href="scanlator/painel.php">Administração</a></br>
 
 
-
+<a href="src/leitor.php">Leitor</a>
 
 
 
