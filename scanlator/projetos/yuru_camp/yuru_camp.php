@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['projeto'] = 'yuru_camp';
-include_once('../../conexao.php');
+include_once('../../../funcoes/conexao.php');
 $pg = $_GET['pg'];
 //var_dump($_SESSION);
 
@@ -15,7 +15,7 @@ if($pg == 'cadastrarcap'){?>
 	</head>
 	<body>
 
-		<form enctype="multipart/form-data" method="POST" action="index.php?pg=cadastrando">
+		<form enctype="multipart/form-data" method="POST" action="yuru_camp.php?pg=cadastrando">
 			<label>Número do capitulo: </label>
 			<input type="text" name="capitulo"><br><br>	
 			<label>Volume do capitulo: </label>
@@ -57,11 +57,10 @@ if($pg == 'cadastrando'){
             }      
         }
     }
-echo "<a href='index.php'>Voltar</a></br></br>";
+echo "<a href='../painel.php'>Voltar</a></br></br>";
 }
 if($pg == 'apagarcap'){ 
 	echo'ainda falta fazer!!';
-	echo "<a href='index.php'>Voltar</a></br></br>";
 }
 
 
@@ -75,9 +74,9 @@ if($pg == 'apagarcap'){
 	</head>
 	<body>
 		<?php
-			echo "<a href='index.php?pg=cadastrarcap'>Cadastrar novo capitulo</a></br></br>";
-			echo "<a href='index.php?pg=apagarcap'>Apagar capitulo</a></br></br>";
-			echo "<a href='../../index.php'>Voltar</a></br></br>";
+			echo "<a href='yuru_camp.php?pg=cadastrarcap'>Cadastrar novo capitulo</a></br></br>";
+			echo "<a href='yuru_camp.php?pg=apagarcap'>Apagar capitulo</a></br></br>";
+			echo "<a href='../../painel.php'>Voltar</a></br></br>";
 		?>
 	</body>
 </html>

@@ -19,7 +19,7 @@ session_start();
 
 
 
-<a href="scanlator/joker.php">Administração</a>
+<a href="scanlator/painel.php">Administração</a>
 
 
 
