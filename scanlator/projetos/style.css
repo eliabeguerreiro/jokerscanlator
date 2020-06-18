@@ -26,6 +26,10 @@ a:focus{
     transition: all 0.3s;
 }
 
+#sidebarCollapse{
+    float: left;
+}
+
 #sidebar{
     min-width: 250px;
     max-width: 250px;
@@ -34,11 +38,11 @@ a:focus{
     transition: all 0.3s;
 }
 
-#sidebar .active{
+#sidebar active{
     margin-left: -250px;
 }
 
-#sidebar .siderbar-header{
+#sidebar.siderbar-header{
     padding: 20px;
     background: #6d7fcc;
 }
@@ -95,15 +99,3 @@ ul ul a{
     transition: all 0.3s;
 }
 
-
-@media (max-width: 768px){
-    #sidebar {
-        margin-left:-250px;
-    }
-    #sidebar.active {
-        margin-left: 0;
-    }
-    #sidebarCollapse span {
-        display: none;
-    }
-}
