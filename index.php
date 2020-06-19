@@ -19,7 +19,7 @@ session_start();
 
 
 
-<a href="scanlator/painel.php">Administração</a></br>
+<a href="scanlator/login.php">Administração</a></br>
 
 
 <a href="src/leitor.php">Leitor</a>
@@ -28,3 +28,5 @@ session_start();
 
 
 </body>
+<?php
+

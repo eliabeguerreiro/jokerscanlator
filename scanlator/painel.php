@@ -1,6 +1,10 @@
 <?php 
 session_start();
 include_once('../funcoes/conexao.php');
+if(!$_SESSION['id']){
+    $_SESSION['msg'] = "Sessão expirada";
+	header("Location: ../scanlator/login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -24,9 +28,9 @@ include_once('../funcoes/conexao.php');
 
             <div class="sidebar-header col">
                 <h3>Painel Joker</h3>
-                <button type="button " id="sidebarCollapse" class="btn btn-danger col " href="#">
-                    Sair
-                </button><br>
+                <a class="text-decoration-none text-reset" href="../index.php"><button type="button"
+                        class="btn btn-danger col">
+                        Sair</button></a><br>
             </div>
             <ul class="list-unstyled components">
 
