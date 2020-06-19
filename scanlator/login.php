@@ -60,7 +60,9 @@ session_start();
 		if(isset($_SESSION['msg'])){
 			msg_sistem($_SESSION['msg']);
 			unset($_SESSION['msg']);
-		}?>
+    }
+    //SINCRONIZAR NOMES E INFORMAÇÕES - MUDAR MATRICULA PARA EMAIL
+    ?>
             <form class="form-signin" method="POST" action="../funcoes/verifica-login.php">
                 <h1 class="h3 mb-3 font-weight-normal">Administração Joker Scanlator</h1>
                 <br><br>
