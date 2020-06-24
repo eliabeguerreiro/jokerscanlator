@@ -2,12 +2,14 @@
 session_start();
 include("conexao.php");
 $btnLogin = filter_input(INPUT_POST, 'btnLogin', FILTER_SANITIZE_STRING);
+
+
 if($btnLogin){
-	$matricula = filter_input(INPUT_POST, 'matricula', FILTER_SANITIZE_STRING);
+	$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
 	$senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
     
-    if((!empty($matricula)) AND (!empty($senha))){
-		$result_usuario = "SELECT * FROM usuarios WHERE matricula='$matricula' LIMIT 1";
+    if((!empty($email)) AND (!empty($senha))){
+		$result_usuario = "SELECT * FROM usuarios WHERE email='$email' LIMIT 1";
 		$resultado_usuario = mysqli_query($conn, $result_usuario);
 		if($resultado_usuario){
 			$row_usuario = mysqli_fetch_assoc($resultado_usuario);
@@ -15,11 +17,11 @@ if($btnLogin){
 			if(password_verify($senha, $row_usuario['senha'])){
 				$_SESSION['id'] = $row_usuario['id'];
 				$_SESSION['nome'] = $row_usuario['nome'];
-				$_SESSION['matricula'] = $row_usuario['matricula'];
+				$_SESSION['email'] = $row_usuario['email'];
 				$_SESSION['tipo'] = $row_usuario['tipo'];
 				$nh = '';
     			$nh .='Dia: '. date('d/m/Y') .' Hora: '.date('h:i:s');
-				$relat = "INSERT INTO `entrada` (`matricula`, `entrada`) VALUES ('" .$_SESSION['matricula']. "','$nh')";
+				$relat = "INSERT INTO `entrada` (`email`, `entrada`) VALUES ('" .$_SESSION['email']. "','$nh')";
 				$resultado_usario = mysqli_query($conn, $relat);
                 if($_SESSION['tipo']== 'ADM'){
                     header("Location:../scanlator/painel.php");

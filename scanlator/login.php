@@ -58,24 +58,31 @@ session_start();
         <div class='jumbotron  container'>
             <?php
 		if(isset($_SESSION['msg'])){
-			msg_sistem($_SESSION['msg']);
+
+            echo "<div class='alert alert-danger' role='alert'>";
+            echo($_SESSION['msg']);
+            echo"</div>";
 			unset($_SESSION['msg']);
     }
-    //SINCRONIZAR NOMES E INFORMAÇÕES - MUDAR MATRICULA PARA EMAIL
     ?>
-            <form class="form-signin" method="POST" action="../funcoes/verifica-login.php">
-                <h1 class="h3 mb-3 font-weight-normal">Administração Joker Scanlator</h1>
-                <br><br>
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required=""
-                    autofocus="">
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-                <div class="checkbox mb-3">
-                </div>
-                <button class="btn  btn-primary " type="submit">Sign in</button>
-                <p class="mt-5 mb-3 text-muted">© 2017-2020</p>
-            </form>
+            <div class="jumbotron  container">
+                <form method="POST" action="../funcoes/verifica-login.php">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" name="email" placeholder="Digite seu email">
+                        <small id="emailHelp" class="form-text text-muted">Não compartilhe seu email com
+                            ninguém</small>
+                    </div>
+                    <div class="form-group">
+                        <labelfor="exampleInputPassword1">Senha</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" name="senha"
+                                placeholder="Digite sua senha">
+                            <br>
+                    </div>
+                    <button class="btn btn-primary" type="submit" name="btnLogin" value="acessar">Login</button>
+                </form>
+            </div>
         </div>
 
     </body>
