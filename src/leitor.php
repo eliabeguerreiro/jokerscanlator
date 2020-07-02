@@ -34,23 +34,14 @@ $arquivos = glob("{*.png,*.jpg,*.jpeg,*.bmp,*.gif}", GLOB_BRACE);?>
                     <option value="3">Three</option>
                 </select>
             </div>
-
-
         </nav>
-
-
-
-
-
-
-
 
 
         <div class='container'>
 
 
             <ul class="list-group"><?php
-foreach($arquivos as $img) echo "<li class='list-group-item'><img class='img-fluid' src='testeleitor/".$img."'></img></li>";
+foreach($arquivos as $img) echo "<li class='list-group-item'><canvas class='img-fluid' src='testeleitor/".$img."'></canvas></li>";
 ?>
             </ul>
         </div>
