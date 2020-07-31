@@ -1,10 +1,10 @@
 <?php 
 session_start();
 include_once('../funcoes/conexao.php');
-if(!$_SESSION['id']){
+/*if(!$_SESSION['id']){
     $_SESSION['msg'] = "Sessão expirada";
 	header("Location: ../scanlator/login.php");
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="pt">
